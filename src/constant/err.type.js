@@ -1,4 +1,9 @@
 module.exports = {
+    invalidParamsError: {
+        code: '10206',
+        message: '参数不合法',
+        result: ''
+    },
     userFormateError: {
         code: '10001',
         message: "账号或密码为空",
