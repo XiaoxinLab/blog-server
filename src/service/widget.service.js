@@ -44,11 +44,14 @@ class WidgetService {
 
     /**
      * 按 widget_key 查一个组件
+     * 说明：只返回启用状态的组件。
+     *       后台禁用掉的组件，前台详情页也该显示「没有找到」，
+     *       不能因为知道标识就能看到内容。
      * @param {string} widgetKey - 组件标识
      * @returns {Promise<object|null>} 组件数据
      */
     async findOneByKey(widgetKey) {
-        const res = await Widget.findOne({ where: { widget_key: widgetKey } });
+        const res = await Widget.findOne({ where: { widget_key: widgetKey, status: 1 } });
         return res?.dataValues;
     }
 
